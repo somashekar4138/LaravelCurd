@@ -3,8 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Models\Employee;
 use App\Http\Controllers\userController;
-use App\Http\Controllers\UserUpdateController;
-use App\Http\Controllers\UserDeleteController;
+
 
 
 /*
@@ -24,18 +23,12 @@ Route::get('/', function () {
 Route::get('/form',function(){
     return view('form');
 });
-Route::post('/form',function(){
-    $employee = new employee();
-    $employee->name = request('Name');
-    $employee->phone = request('Phone');
-    $employee->email = request('Email');
-    $employee->language = request('language');
-    $employee->gender = request('Gender');
-    $employee->decription = request('Description');
-    $employee->save();
+Route::get('/form2',function(){
+    return view('form2');
 });
+Route::post('/form',[userController::class,'mam']);
 Route::get("/main",[userController::class,'index']);
-Route::get('edit/{id}',[UserUpdateController::class,'show']);
-Route::post('edit/{id}',[UserUpdateController::class,'edit']);
-Route::get('delete/{id}',[UserDeleteController::class,'destroy']);
+Route::get('edit/{id}',[userController::class,'show']);
+Route::post('edit/{id}',[userController::class,'edit']);
+Route::get('delete/{id}',[userController::class,'destroy']);
 
