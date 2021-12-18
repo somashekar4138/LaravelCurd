@@ -20,7 +20,6 @@ class UserDeleteController extends Controller
         }
         public function mam(Request $request) {
             $employee = new Employee;
-
             $employee->name = $request->input('Name');
             $employee->phone = $request->input('Phone');
             $employee->email = $request->input('Email');
